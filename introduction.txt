@@ -1,0 +1,8 @@
+Hello Every One this file gives a breif introduction on TEMPERATURE-DISPLAY-APP 
+
+This a very simple React-app which gives a basic knowledge about useState,arrowFunction and arrays
+
+First of all we have to start the npm on VSCode to execute the output at our destination (localhost:3000)
+
+npm start --> to start the deployment
+

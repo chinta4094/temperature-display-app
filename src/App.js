@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+import "./index.css";
+const App = () => {
+  const [temperatureValue, setTemperatureValue] = useState(10);
+  const [temperatureColor, setTemperatureColor] = useState("cold");
+
+  const increaseTemperatue = () => {
+    if (temperatureValue === 30) return;
+    const newTemperature = temperatureValue + 1;
+
+    if (newTemperature >= 0 && newTemperature < 15) {
+      setTemperatureColor("cold");
+    }
+    if (newTemperature >= 15) {
+      setTemperatureColor("moderate");
+    }
+    if (newTemperature >= 25) {
+      setTemperatureColor("hot");
+    }
+
+    setTemperatureValue(newTemperature);
+  };
+  const decreaseTemperature = () => {
+    if (temperatureValue === -10) return;
+    const newTemperature = temperatureValue - 1;
+    if (newTemperature < 15) {
+      setTemperatureColor("cold");
+    }
+    if (newTemperature < 25) {
+      setTemperatureColor("moderate");
+    }
+    if (newTemperature < 10) {
+      setTemperatureColor("cold");
+    }
+    if (newTemperature < 0) {
+      setTemperatureColor("ice");
+    }
+    setTemperatureValue(newTemperature);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className="temperature-display-container">
+        <div className={`temperature-display ${temperatureColor}`}>
+          {temperatureValue}
+        </div>
+      </div>
+      <div className="button-container">
+        <button onClick={() => increaseTemperatue()}>+</button>
+        <button onClick={() => decreaseTemperature()}>-</button>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
